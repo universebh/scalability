@@ -1,0 +1,11 @@
+version: '2'
+services:
+    scalability:
+        build: ./scalability
+        # user: root
+        command: bash -c "bash runserver.sh"
+        volumes:
+            - ./scalability:/var/log/ersshw4
+        ports:
+            - "12345:12345"
+        tty: true

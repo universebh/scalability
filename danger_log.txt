@@ -1,0 +1,9 @@
+- We found the largest number of file descriptors that our server can take is 1024 by checking ulimit -n.
+
+- We found when the client side opens more than 1024 threads such as 2048 threads to send requests simultaneously, the server side would fail to accept the requests and print "accept: too many files". This makes sense because despite the fact our Linux server allows us to open much more threads than 1024, but the opening file descriptor number limit is 1024.
+
+- If experience errors such as "accept: too many files", try to re-run the client shell script with less number of requests.
+
+- In server and client socket, we did not put a while loop to receive/send messages, since the message size in this assignment is very small. For larger messages, a while loop should be used to guarantee the entire message is received.
+
+- We put server side code and client side code together into scalaMain.cpp. The way to run server/client side code can be found in README. 
